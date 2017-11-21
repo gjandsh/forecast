@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_481829_t6oqzll8mww2ke29.css">
+     <script src="./main.js"></script>
+    <style>
+        body {
+            background-color: #222;
+            font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif}
+
+        * {
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            border: 0;
+        }
+
+        .wrap {
+            height: 560px;
+            width: 800px;
+            margin: 0 auto;
+            background-image: url(https://i.loli.net/2017/11/21/5a13da3bda99d.jpg);
+            position: relative;
+        }
+
+        .container {
+            height: 440px;
+            width: 660px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .cover {
+            background-image: url(https://i.loli.net/2017/11/21/5a13da3d3209d.jpg);
+            background-size: cover;
+            height: 310px;
+            position: relative;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .location {
+            position: absolute;
+            right: 30px;
+            top: 26px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .location p {
+            margin: 0;
+            text-align: right;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 0;
+            margin: 0;
+        }
+
+        .clearfix {
+            overflow: hidden;
+        }
+
+        .locate-icon {
+            text-align: right;
+        }
+
+        .locate-icon i {
+            font-size: 30px;
+            color: #fff
+        }
+
+        .cover-footer {
+            width: 330px;
+        }
+
+        .cover-footer li {
+            float: left;
+            text-align: center;
+            font-size: 10px;
+            color: rgba(0, 0, 0, 0.8);
+            width: 33.3333%;
+            padding: 8px 0;
+            border-bottom: 4px solid;
+            border-color: #fff;
+            font-weight:600;
+            background:rgba(0,0,0,0.2);
+        }
+
+        .cover-footer li:first-child {
+            color: #eee;
+            border-color: #f4c851
+        }
+
+        .cover-footer li:last-child {
+            border-color: #69d0eb
+        }
+
+        .weather-content ul {
+            margin: 0;
+        }
+
+        .weather-content li {
+            float: left;
+            border-left: 1px solid rgba(0, 0, 0, 0.2)
+        }
+
+        .weather-content li:first-child {
+            border-left: none;
+        }
+
+        .weather-content .today {
+            width: 200px;
+            margin: 0 20px;
+        }
+
+        .today {
+            padding-bottom: 15px;
+        }
+
+        .today p {
+            float: left;
+            width: 50%;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .weather-icon {
+            padding: 10px 0;
+        }
+
+        .weather-icon i {
+            font-size: 70px;
+        }
+
+        .not-today {
+            width: 69px;
+            padding-top: 17px;
+            padding-bottom: 2px;
+        }
+
+        .not-today p {
+            text-align: center;
+            font-size: 12px;
+            color: white;
+            padding-bottom: 3px;
+        }
+
+        .not-today .day span {
+            border-radius: 8px;
+            padding: 2px 6px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .not-today p i {
+            font-size: 20px;
+        }
+
+        .today .temperature {
+            font-size: 70px;
+        }
+
+        .today .date {
+            font-size: 12px;
+            width: 40%;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+            line-height: 18px;
+            margin: 0 16px 0px 4px;
+        }
+
+        .today .description {
+            font-size: 12px;
+        }
+
+        .hover {
+            box-shadow: inset 0 0 20px 0 #fff;
+            transform: scaleY(1.1)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="container">
+            <div class="cover">
+                <div class="location">
+                    <div class="locate-icon">
+                        <i class="iconfont icon-globaliconfont06"></i>
+                    </div>
+                    <div class="city">
+                        <span>FLORIDA,</span>
+                        <span>USA</span>
+                        <p class='timing'></p>
+                    </div>
+                </div>
+                <ul class="cover-footer clearfix">
+                    <li>
+                        <i class="iconfont icon-weather"></i>
+                        <span>WEATHER</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-lvyoutehui"></i>
+                        <span>NEW&EVENTS</span>
+                    </li>
+                    <li>
+                        <i class="iconfont icon-zizhucan"></i>
+                        <span>RESTRUANT</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="weather-content">
+                <ul class='clearfix'>
+                    <li>
+                        <div class="today active clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">11-20 周一</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today inactive">
+                            <p class="day">
+                                <span>周一</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-zhenyu"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周二</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-xiaoxue"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周三</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-leiyu"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周四</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-zhenxue"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周五</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-duoyun"></i>
+                            </p>
+                            <p class="temperature">
+                                83°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周六</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="today inactive clearfix">
+                            <p class="temperature">
+                                82°
+                            </p>
+                            <p class="weather-icon">
+                                <i class="iconfont icon-qing"></i>
+                            </p>
+                            <p class="date">2017-11-21</p>
+                            <p class='description'>阵雨/阵雨</p>
+                        </div>
+                        <div class="not-today">
+                            <p class="day">
+                                <span>周日</span>
+                            </p>
+                            <p>
+                                <i class="iconfont icon-duoyun1"></i>
+                            </p>
+                            <p class="temperature">
+                                82°
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var date = new Date();
+        var hours = date.getHours()
+        var minutes = date.getMinutes()
+        function pad(num) {
+            if (2 == num.toString().length) return num;
+            return "0" + num;
+        }
+        var timing = hours < 12 ? pad(hours) + ':' + pad(minutes) + 'am' : pad(hours) + ':' + pad(minutes) + ' pm'
+        $('.timing').text(timing);
+        var $weaCon = $('.weather-content')
+        $weaCon.find('.today').hide()
+        $weaCon.on('click', '.not-today', function () {
+            $(this).hide();
+            $(this).parent().children('.today').show();
+            $(this).parent().siblings().children('.today').hide();
+            $(this).parent().siblings().children('.not-today').show();
+        });
+        $weaCon.on('mouseenter', '.not-today', function () {
+            $(this).addClass('hover');
+        })
+        $weaCon.on('mouseleave', '.not-today', function () {
+            $(this).removeClass('hover');
+        })
+        $weaCon.find('.not-today').first().trigger('click')
+    </script>
+</body>
+
+</html>
