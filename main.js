@@ -66,7 +66,7 @@ $.get('https://weixin.jirengu.com/weather/ip')
             { location: dataip }).done(function (res) {
                 let datacity = res.results[0].name
                 let datacountry = res.results[0].path.slice(9, 11);
-                $('.location .city').children().first().text(datacity + ',');
+                $('.location .city').children().first().text(datacity + ' ');
                 $('.location .country').text(datacountry);
                 let cid = res.results[0].id;
                 $.get('https://weixin.jirengu.com/weather/now',
